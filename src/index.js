@@ -29,8 +29,7 @@ app.post('/repositories', (request, response) => {
 app.put('/repositories/:id', (request, response) => {
   const { id } = request.params
   const updateRepository = request.body
-
-  const repositoryIndex = repositories.findindex(
+  const repositoryIndex = repositories.findIndex(
     repository => repository.id === id
   )
   if (repositoryIndex < 0) {
@@ -42,7 +41,6 @@ app.put('/repositories/:id', (request, response) => {
       .status(404)
       .json({ error: 'Dont more 10 likes', ...repositories[repositoryIndex] })
   }
-
   const repository = { ...repositories[repositoryIndex], ...updateRepository }
 
   repositories[repositoryIndex] = repository
